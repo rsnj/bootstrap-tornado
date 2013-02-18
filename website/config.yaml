@@ -1,0 +1,17 @@
+debug: true
+xsrf_cookies: true
+login_url: /
+cookie_secret: T6tomjTTQ3uK+yNBjfPjgGIBQ9MvlU6xsjlYZx+5v50=
+password_salt: xl8moEeQSNa0t8WUzBM4VQ==
+static_path: static
+template_path: templates
+invite_only: true
+
+analytics:
+  google: UA-XXXXXXX-X
+
+mongodb:
+  host: 127.0.0.1
+  port: 27017
+  dbname: bootstrap
+  poolid: bootstrap

@@ -1,0 +1,26 @@
+{% extends "_layout.html" %}
+{% block title %}Signup{% end %}
+
+{% block scripts %}
+{% end %}
+
+{% block content %}
+<div class="row">
+    <div class="well span4 offset4">
+        <h2>Sign up</h2>
+
+        <div class="row-fluid">
+            <p>If you would like to sign up to receive updates or an invite when they are available please give us your email address.</p>
+
+            <form method="post" class="form-inline">
+                {% raw xsrf_form_html() %}
+                <div class="control-group span9{% if form.email.errors %} error{% end %}">
+                    {% raw form.email(placeholder='user@domain.com') %}
+                </div>
+
+                <button type="submit" class="btn">Enter</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% end %}

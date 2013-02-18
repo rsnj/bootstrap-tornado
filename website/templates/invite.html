@@ -1,0 +1,43 @@
+{% extends "_layout.html" %}
+{% block title %}Private Beta{% end %}
+
+{% block scripts %}
+{% end %}
+
+{% block content %}
+<div class="row">
+    <div class="well span4 offset4">
+        <h2>Private Beta</h2>
+
+        <div class="row-fluid">
+            <p>I'm sorry, but we are currently in private beta. If you have an invite code please enter it below.</p>
+
+            {% if handler.get_argument('invite', None) %}
+            <div class="alert alert-error">
+                Invalid invite code
+            </div>
+            {% end %}
+
+            <form method="get" class="form-inline">
+                <div class="control-group span9">
+                    <input type="text" id="invite" name="invite" placeholder="Invite Code" maxlength="25" />
+                </div>
+                <button type="submit" class="btn">Enter</button>
+            </form>
+        </div>
+
+        <div class="row-fluid">
+            <p>If you would like to sign up to receive updates or an invite when they are available please give us your email address.</p>
+
+            <form action="/signup" method="post" class="form-inline">
+                {% raw xsrf_form_html() %}
+                <div class="control-group span9{% if form.email.errors %} error{% end %}">
+                    {% raw form.email(placeholder='user@domain.com') %}
+                </div>
+
+                <button type="submit" class="btn">Enter</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% end %}

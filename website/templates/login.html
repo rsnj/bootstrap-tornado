@@ -1,0 +1,39 @@
+{% extends "_layout.html" %}
+{% block title %}Login{% end %}
+
+{% block scripts %}
+{% end %}
+
+{% block head %}
+{% end %}
+
+{% block content %}
+<div class="row">
+    <div class="span4 offset4">
+        <form method="POST" class="form well">
+            {% raw xsrf_form_html() %}
+            <h2 class="form-signin-heading">Please log in</h2>
+            {% if 'invalid' in form.errors and form.errors['invalid'] %}
+            <div class="alert alert-error">Invalid Login. Please try again.</div>
+            {% end %}
+
+            <div class="control-group{% if form.email.errors %} error{% end %}">
+                <div class="controls">
+                    {% raw form.email(placeholder='user@domain.com') %}
+                </div>
+            </div>
+            <div class="control-group{% if form.password.errors %} error{% end %}">
+                <div class="controls">
+                    {% raw form.password(placeholder='Password') %}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="checkbox">
+                    {% raw form.remember() %} Remember me
+                </label>
+            </div>
+            <button class="btn btn-large btn-primary" type="submit">Log in</button>
+        </form>
+    </div>
+</div>
+{% end %}
